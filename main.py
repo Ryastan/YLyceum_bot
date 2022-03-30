@@ -5,8 +5,7 @@ import sys
 import json
 import requests
 
-sys.path.insert(1, '/commands')
-from meme import Bot_commands
+from .commands.meme import Bot_commands
 
 TOKEN = ""
 
