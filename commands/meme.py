@@ -1,8 +1,9 @@
 import discord
 from discord.ext import commands
 import requests
+import schedule
 
-class Bot_commands(commands.Cog):
+class Meme_command(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
@@ -14,3 +15,7 @@ class Bot_commands(commands.Cog):
         }
         response = requests.get(URL, params).json()
         await ctx.channel.send(response['url']) #Вывод ссылки(картинки) с мемом
+    
+    @commands.command(name='meme in') #Команда для установки времени для мема
+    async def time_meme(self, ctx):
+        pass
