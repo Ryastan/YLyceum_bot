@@ -1,3 +1,5 @@
+from os.path import getsize
+
 import discord
 import json
 from discord.ext import commands
@@ -12,12 +14,34 @@ class Reputation_command(commands.Cog):
 
     @commands.command(name='myrep')  # Команда с репутацие пользоваеля
     async def meme(self, ctx):
-        with open('reputation.json') as rep_file:
-            data = json.load(rep_file)
-        if str(ctx.author.bot) in rep_file:
-            rep_file[str(ctx.author.bot)] += 1
+        try:
+            f = open('reputation.txt', 'r')
+        except FileNotFoundError:
+            f = open('reputation.txt', 'w')
+            f.close()
+            f = open("reputation.txt", "r")
+        data = f.read()
+        data = data.split("\n")
+        if getsize("reputation.txt"):
+            for i in range(len(data)):
+                if data[i] != "":
+                    data[i] = {str(data[i].split(":")[0]): int(data[i].split(":")[1])}
         else:
-            rep_file[str(ctx.author.bot)] = 1
-        await ctx.channel.send("Ваша репутация теперь равна", str(rep_file[str(ctx.author.bot)]))
-        with open('reputation.json', 'w') as cat_file:
-            json.dump(rep_file, cat_file)
+            data = []
+        f.close()
+        ins = -1
+        for i in range(len(data)):
+            if str(ctx.message.author) in data[i]:
+                ins = i
+        if ins >= 0:
+            data[ins][str(ctx.message.author)] += 1
+            print(12312312313)
+        else:
+            data.append({str(ctx.message.author): 1})
+        f = open('reputation.txt', 'w')
+        for i in range(len(data)):
+            for key in data[i]:
+                f.write(str(key + ":" + str(data[i][key]) + "\n"))
+        await ctx.channel.send("ahahaha")
+        f.close()
+        print(data)
