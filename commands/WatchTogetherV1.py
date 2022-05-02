@@ -19,7 +19,8 @@ class WT_command(commands.Cog):
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-        response = requests.get('https://w2g.tv/rooms/create.json', params=params).json()
+        response = requests.post('https://w2g.tv/rooms/create.json', params=params).json()
         with open("response_WT.json", mode='w', encoding='utf-8')as file:
             json.dump(response, file)
         
+        await ctx.channel.send(f"Ссылка на совместный просмотр \n https://w2g.tv/rooms/{response['streamkey']}")
