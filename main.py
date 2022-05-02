@@ -10,7 +10,7 @@ from commands.meme import Meme_command
 from commands.WatchTogetherV1 import WT_command
 from commands.reputation import Reputation_command
 
-TOKEN = "OTUxOTg5Nzg1OTk0NjEyNzQ3.YivflA.w9eMzZuFd2L4iYWkuD63HVg-rhU"
+TOKEN = ""
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
