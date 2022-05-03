@@ -42,6 +42,7 @@ class Reputation_command(commands.Cog):
         for i in range(len(data)):
             for key in data[i]:
                 f.write(str(key + ":" + str(data[i][key]) + "\n"))
-        await ctx.channel.send("ahahaha")
+        say = "Ваша рпутация:" + str(data[ins][key])
+        await ctx.channel.send(say)
         f.close()
         print(data)

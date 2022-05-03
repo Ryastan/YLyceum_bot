@@ -25,4 +25,4 @@ if __name__ == '__main__':
     bot.add_cog(Meme_command(bot))
     bot.add_cog(WT_command(bot))
     bot.add_cog(Reputation_command(bot))
-    bot.run("NzU5NDY5MjY2NTQ1Mjc5MDA3.X2983w.ssj5BagljMU4JK8VyQ6aOjEn1pA")
+    bot.run("NzU5NDY5MjY2NTQ1Mjc5MDA3.X2983w.myHOaxmNsItEX1aAJosnj_OjYsQ")
