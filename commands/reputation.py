@@ -45,4 +45,4 @@ class Reputation_command(commands.Cog):
         say = "Ваша рпутация:" + str(data[ins][key])
         await ctx.channel.send(say)
         f.close()
-        print(data)
+        print(1)
