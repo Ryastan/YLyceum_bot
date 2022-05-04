@@ -17,9 +17,10 @@ class Meme_command(commands.Cog):
     async def meme(self, ctx, keyword=''):
         channel_id = ctx.channel.id
         channel = self.bot.get_channel(channel_id)
-        URL = "https://api.humorapi.com/memes/random" #URL randomMeMe
+        URL = "https://api.humorapi.com/memes/search" #URL randomMeMe
         params = {
-            'api-key': "59bf2775d7c244aeac828e67f4f05ca0"
+            'api-key': "59bf2775d7c244aeac828e67f4f05ca0",
+            'keywords': keyword
         }
         response = requests.get(URL, params).json()
         with open('response.json', mode='w', encoding='utf-8') as file:
