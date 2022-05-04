@@ -25,7 +25,7 @@ class WT_command(commands.Cog):
             json.dump(response, file, indent=3)
         
         await ctx.channel.send(f"Ссылка на совместный просмотр \n https://w2g.tv/rooms/{response['streamkey']}")
-    
+
     @commands.command(name='add_video')
     async def add_video_WT(self, ctx, url):
         response = requests.post('https://w2g.tv/rooms/{streamkey}/playlists/current/playlist_items/sync_update', params=self.params).json()
@@ -36,3 +36,9 @@ class WT_command(commands.Cog):
             await ctx.channel.send(f'Видео успешно добавлено в плейлист \n Ссылка на совместный просмотр плейлиста')
         else:
             await ctx.channel.send(f'Произошло ошибка, обратитесь к разработчками для решения проблемы')
+
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    # К этим функциям надо будет подключить БД для хранения streamkey и discord_id
+    # К каждому пользователя после создания комнату будет присвоен streamkey чтобы он мог добовалять видео в плейлист
+    # Либо к каждому голосовому каналу/серверу присвоить stremkey, надо додумать
+    # Хз как будут работать функции если их будут использовать сразу несколько пользователей
