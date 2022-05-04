@@ -13,7 +13,27 @@ class Meme_command(commands.Cog):
         self.client = discord.Client()
         self.everydays_meme.start()
     
-    @commands.command(name='meme') #Команда с рандомными мемами
+    @commands.command(name='meme') #Команда с мемами по ключевому слову
+    async def meme(self, ctx, keyword=''):
+        channel_id = ctx.channel.id
+        channel = self.bot.get_channel(channel_id)
+        URL = "https://api.humorapi.com/memes/random" #URL randomMeMe
+        params = {
+            'api-key': "59bf2775d7c244aeac828e67f4f05ca0"
+        }
+        response = requests.get(URL, params).json()
+        with open('response.json', mode='w', encoding='utf-8') as file:
+            json.dump(response, file, indent=3)
+        try:
+            await channel.send(response['url']) #Вывод ссылки(картинки) с мемом
+        except KeyError:
+            if response['status'] == 'failure' and response['code'] == 402:
+                await channel.send('Ошибка(\nМемы на сегодня закончились')
+            else:
+                await channel.send(f"Ошибка {response['code']} Обратитесь к разработчиками для решения проблемы")  
+    
+
+    @commands.command(name='random_meme') #Команда с рандомными мемами
     async def meme(self, ctx):
         channel_id = ctx.channel.id
         channel = self.bot.get_channel(channel_id)
@@ -23,14 +43,14 @@ class Meme_command(commands.Cog):
         }
         response = requests.get(URL, params).json()
         with open('response.json', mode='w', encoding='utf-8') as file:
-            json.dump(response, file)
+            json.dump(response, file, indent=3)
         try:
             await channel.send(response['url']) #Вывод ссылки(картинки) с мемом
         except KeyError:
             if response['status'] == 'failure' and response['code'] == 402:
                 await channel.send('Ошибка(\nМемы на сегодня закончились')
             else:
-                await channel.send(f"Ошибка {response['code']} Обратитесь к разработчиками для решения проблемы")  
+                await channel.send(f"Ошибка {response['code']} Обратитесь к разработчиками для решения проблемы") 
     
 
     @commands.command(name='meme_everyday_at') #Команда для установки времени для мема
@@ -64,7 +84,7 @@ class Meme_command(commands.Cog):
                 }
                 response = requests.get(URL, params).json()
                 with open('response.json', mode='w', encoding='utf-8') as file:
-                    json.dump(response, file)
+                    json.dump(response, file, indent=3)
                 try:
                     await channel.send(response['url']) #Вывод ссылки(картинки) с мемом
                 except KeyError:
