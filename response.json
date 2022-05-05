@@ -1,0 +1,5 @@
+{
+   "status": "failure",
+   "code": 402,
+   "message": "Your daily points limit of 10 has been reached. Please upgrade your plan to continue using the API."
+}
