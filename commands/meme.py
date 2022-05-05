@@ -27,7 +27,7 @@ class Meme_command(commands.Cog):
         with open('response.json', mode='w', encoding='utf-8') as file:
             json.dump(response, file, indent=3)
         try:
-            await channel.send(response['url'])  # Вывод ссылки(картинки) с мемом
+            await channel.send(response['memes'][0]['url'])  # Вывод ссылки(картинки) с мемом
         except KeyError:
             if response['status'] == 'failure' and response['code'] == 402:
                 await channel.send('Ошибка(\nМемы на сегодня закончились')
@@ -35,7 +35,7 @@ class Meme_command(commands.Cog):
                 await channel.send(f"Ошибка {response['code']} Обратитесь к разработчиками для решения проблемы")
 
     @commands.command(name='random_meme')  # Команда с рандомными мемами
-    async def meme(self, ctx):
+    async def random_meme(self, ctx):
         channel_id = ctx.channel.id
         channel = self.bot.get_channel(channel_id)
         URL = "https://api.humorapi.com/memes/random"  # URL randomMeMe

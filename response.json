@@ -1,5 +1,5 @@
 {
-   "id": 47566,
-   "url": "https://preview.redd.it/3zxbg9vde2kz.jpg?auto=webp&s=8b05c7d1295d72e9e08ee25f5d0fa5b36c00add9",
-   "type": "image/jpeg"
+   "status": "failure",
+   "code": 402,
+   "message": "Your daily points limit of 10 has been reached. Please upgrade your plan to continue using the API."
 }

@@ -43,7 +43,7 @@ class Reputation_command(commands.Cog):
         for i in range(len(data)):
             for key in data[i]:
                 f.write(str(key + ":" + str(data[i][key]) + "\n"))
-        say = "Ваша рпутация:" + str(data[ins][key])
+        say = "Ваша репутация:" + str(data[ins][key])
         await ctx.channel.send(say)
         say = "Ваш уровень:" + str(data[ins][key] // 5)
         await ctx.channel.send(say)
@@ -87,11 +87,11 @@ class rep_eveent(commands.Cog):
         for i in range(len(data)):
             for key in data[i]:
                 f.write(str(key + ":" + str(data[i][key]) + "\n"))
-        say = "Ваша рпутация:" + str(data[ins][key])
+        say = "Ваша репутация:" + str(data[ins][key])
         if data[ins][key] % 5 == 0:
             say = "Поздравляем, вы достигли уровня " + str(data[ins][key] // 5)
             await message.channel.send(say)
-            say = "Ваша рпутация:" + str(data[ins][key])
+            say = "Ваша репутация:" + str(data[ins][key])
             await message.channel.send(say)
         f.close()
         print(1)

@@ -8,11 +8,11 @@ import json
 import requests
 import logging
 from commands.meme import Meme_command
-
+from commands.WatchTogetherV1 import WT_command
 from commands.reputation import rep_eveent
 from commands.reputation import Reputation_command
 
-TOKEN = "NzU5NDY5MjY2NTQ1Mjc5MDA3.X2983w.GsN0PNRjwyGOsaWj1lO_a2-nMXU"
+TOKEN = "OTUxOTg5Nzg1OTk0NjEyNzQ3.YivflA.gzmHbYDO5eYC6LJTJii0wmngMsQ"
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -26,4 +26,5 @@ if __name__ == '__main__':
     bot.add_cog(Meme_command(bot))
     bot.add_cog(Reputation_command(bot))
     bot.add_cog(rep_eveent(bot))
+    bot.add_cog(WT_command(bot))
     bot.run(TOKEN)
